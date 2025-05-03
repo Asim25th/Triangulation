@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="800" Height="600"
+		d:DesignWidth="800" d:DesignHeight="600"
+		x:CompileBindings="False" CanResize="False"
+		WindowStartupLocation="CenterScreen"
+        x:Class="Triangulation.MainWindow"
+		Title="Задание «Триангуляция»">
+	<Grid ShowGridLines="False" RowDefinitions="3*, 1.5*">
+		<Canvas Name="pole" Grid.Row="0"/>
+
+		<Border Grid.Row="1" BorderThickness="5" BorderBrush="#4352a8">
+			<Panel Background="#cfbcc5">
+				<Grid ShowGridLines="False">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>	
+					
+					<StackPanel ZIndex="6" Margin="10" Grid.Column="0" Grid.Row="0">
+						<TextBlock Text="Координаты центра: "
+                                   FontSize="15" FontWeight="Bold"/>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Координата X: "/>
+							<TextBlock Text="{Binding XCoord, StringFormat={}{0:F3}}"/>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Координата Y: "/>
+							<TextBlock Text="{Binding YCoord, StringFormat={}{0:F3}}"/>
+						</StackPanel>
+					</StackPanel>
+
+					<StackPanel Grid.Column="1" Margin="10">
+						<Button Content="Выход" Height="33"
+                                HorizontalAlignment="Right"
+                                Click="ExitButton_Click"/>
+						<Button Content="Добавить новый роутер"
+                                Margin="120 -35 0 0"
+								Click="AddRouter_Test_ButtonClick"/>
+					</StackPanel>
+
+					<StackPanel Grid.Row="1" Grid.Column="0" Margin="10 10 0 0">
+						<TextBlock Text="Качество сигнала роутеров, %:" FontWeight="Bold"/>
+						<TextBlock Name="SignalTextBlock"/>
+					</StackPanel>
+				</Grid>
+			</Panel>
+		</Border>
+	</Grid>
+</Window>
